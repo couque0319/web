@@ -4,41 +4,108 @@
   <meta charset="utf-8">
   <title>자기소개 및 프로그래밍 숙련도</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       padding: 20px;
-      background-color: #f5f5f5;
     }
     
     .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      padding: 40px;
+      text-align: center;
+      color: white;
+    }
+    
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+    
+    .content {
+      padding: 40px;
     }
     
     h2 {
       color: #333;
-      border-bottom: 2px solid #4CAF50;
-      padding-bottom: 10px;
+      font-size: 1.8em;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
     }
     
-    mark {
-      background-color: #ffeb3b;
-      padding: 2px 4px;
-      border-radius: 3px;
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      border-radius: 2px;
     }
     
-    meter {
-      width: 200px;
-      height: 20px;
+    .section {
+      margin-bottom: 50px;
+      animation: slideInLeft 0.6s ease-out;
+      animation-fill-mode: both;
+    }
+    
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.4s; }
+    .section:nth-child(4) { animation-delay: 0.6s; }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
     
     .profile-section {
       display: flex;
-      gap: 30px;
+      gap: 40px;
       align-items: flex-start;
       margin-bottom: 30px;
     }
@@ -47,144 +114,361 @@
       flex: 1;
     }
     
+    .profile-content p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #555;
+    }
+    
     .profile-image {
-      flex: 0 0 200px;
+      flex: 0 0 250px;
       text-align: center;
     }
     
     .profile-image img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
-      border-radius: 10px;
-      border: 3px solid #4CAF50;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      border: 4px solid #4CAF50;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .profile-image img:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     }
     
     .image-placeholder {
       width: 100%;
-      height: 200px;
+      height: 250px;
       background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-      border: 2px dashed #ccc;
-      border-radius: 10px;
+      border: 3px dashed #ccc;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #888;
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
-      line-height: 1.4;
     }
     
-    @media (max-width: 768px) {
-      .profile-section {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .profile-image {
-        flex: none;
-        align-self: center;
-      }
-    }
-
-    .form-container {
-      background: #f9f9f9;
-      padding: 25px;
+    mark {
+      background: linear-gradient(135deg, #ffeb3b, #ffc107);
+      padding: 4px 8px;
       border-radius: 8px;
-      border: 1px solid #ddd;
-      margin-top: 20px;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(255, 235, 59, 0.3);
+    }
+    
+    time {
+      color: #4CAF50;
+      font-weight: 600;
+    }
+    
+    .skills-container {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #4CAF50;
+    }
+    
+    .skill-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    
+    .skill-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .skill-name {
+      width: 80px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .skill-bar-container {
+      flex: 1;
+      margin: 0 20px;
+    }
+    
+    .skill-bar {
+      width: 100%;
+      height: 12px;
+      background: #e0e0e0;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      border-radius: 6px;
+      position: relative;
+      transition: width 1.5s ease-in-out;
+      animation: skillAnimation 2s ease-in-out;
+    }
+    
+    @keyframes skillAnimation {
+      from { width: 0; }
+    }
+    
+    .skill-progress.java { width: 50%; }
+    .skill-progress.c { width: 30%; }
+    .skill-progress.python { width: 20%; }
+    .skill-progress.cpp { width: 24%; }
+    
+    .skill-percentage {
+      font-weight: 600;
+      color: #4CAF50;
+      min-width: 45px;
+    }
+    
+    .form-container {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid #dee2e6;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
     }
     
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      position: relative;
     }
     
     label {
       display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
+      margin-bottom: 10px;
+      font-weight: 600;
       color: #333;
+      font-size: 1.1em;
     }
     
     input[type="email"], 
     input[type="password"] {
       width: 100%;
-      padding: 12px;
-      border: 2px solid #ddd;
-      border-radius: 5px;
+      padding: 15px 20px;
+      border: 2px solid #dee2e6;
+      border-radius: 12px;
       font-size: 16px;
-      box-sizing: border-box;
-      transition: border-color 0.3s;
+      background: white;
+      transition: all 0.3s ease;
     }
     
     input[type="email"]:focus, 
     input[type="password"]:focus {
       outline: none;
       border-color: #4CAF50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+      transform: translateY(-2px);
     }
     
     .submit-btn {
-      background-color: #4CAF50;
+      background: linear-gradient(135deg, #4CAF50, #45a049);
       color: white;
-      padding: 12px 30px;
+      padding: 15px 40px;
       border: none;
-      border-radius: 5px;
+      border-radius: 12px;
       cursor: pointer;
       font-size: 16px;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
     .submit-btn:hover {
-      background-color: #45a049;
+      background: linear-gradient(135deg, #45a049, #4CAF50);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
     }
     
     .submit-btn:active {
-      transform: translateY(1px);
+      transform: translateY(-1px);
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        border-radius: 15px;
+      }
+      
+      .header {
+        padding: 30px 20px;
+      }
+      
+      .header h1 {
+        font-size: 2em;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+      
+      .profile-section {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+      
+      .profile-image {
+        flex: none;
+        align-self: center;
+      }
+      
+      .skill-item {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .skill-bar-container {
+        margin: 0;
+        width: 100%;
+      }
+      
+      .form-container {
+        padding: 30px 20px;
+      }
+    }
+    
+    /* 추가 애니메이션 효과 */
+    .emoji {
+      display: inline-block;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    
+    /* 스크롤 바 스타일링 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #45a049, #4CAF50);
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>👋 자기소개</h2>
-    <div class="profile-section">
-      <div class="profile-content">
-        <p>
-          안녕하세요! 저는 <mark>황보정</mark>입니다.<br><br>
-          웹 개발자를 꿈꾸며 <time datetime="2023-03">2023년 3월</time>부터 공부를 시작했습니다.<br><br>
-          현재 목표는 <mark>프로그램 개발자</mark>가 되는 것입니다.<br><br>
-          지속적인 학습과 성장을 통해 더 나은 개발자가 되기 위해 노력하고 있습니다.
-        </p>
-      </div>
-      <div class="profile-image">
-        <img src="오구이미지3.png" alt="프로필 사진">
-      </div>
+    <div class="header">
+      <h1><span class="emoji">👋</span> 안녕하세요!</h1>
+      <p>웹 개발자를 꿈꾸는 황보정입니다</p>
     </div>
-
-    <h2>💻 프로그래밍 언어 숙련도</h2>
-    <p>
-      JAVA: <meter value="0.9" max="1.0">90%</meter> 90%<br>
-      C: <meter value="0.8" max="1.0">80%</meter> 80%<br>
-      Python: <meter value="0.7" max="1.0">70%</meter> 70%<br>
-      C++: <meter value="0.6" max="1.0">60%</meter> 60%<br>
-    </p>
-
-    <h2>🔐 로그인</h2>
-    <div class="form-container">
-      <form action="#" method="post" id="loginForm">
-        <div class="form-group">
-          <label for="email">이메일:</label>
-          <input type="email" id="email" name="email" required placeholder="example@email.com">
+    
+    <div class="content">
+      <div class="section">
+        <h2><span class="emoji">🙋‍♂️</span> 자기소개</h2>
+        <div class="profile-section">
+          <div class="profile-content">
+            <p>
+              안녕하세요! 저는 <mark>황보정</mark>입니다.<br><br>
+              웹 개발자를 꿈꾸며 <time datetime="2023-03">2023년 3월</time>부터 공부를 시작했습니다.<br><br>
+              현재 목표는 <mark>프로그램 개발자</mark>가 되는 것입니다.<br><br>
+              지속적인 학습과 성장을 통해 더 나은 개발자가 되기 위해 노력하고 있습니다.
+            </p>
+          </div>
+          <div class="profile-image">
+            <img src="오구이미지3.png" alt="황보정 프로필 사진">
+          </div>
         </div>
-        
-        <div class="form-group">
-          <label for="password">패스워드:</label>
-          <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요">
+      </div>
+
+      <div class="section">
+        <h2><span class="emoji">💻</span> 프로그래밍 언어 숙련도</h2>
+        <div class="skills-container">
+          <div class="skill-item">
+            <div class="skill-name">JAVA</div>
+            <div class="skill-bar-container">
+              <div class="skill-bar">
+                <div class="skill-progress java"></div>
+              </div>
+            </div>
+            <div class="skill-percentage">50%</div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-name">C</div>
+            <div class="skill-bar-container">
+              <div class="skill-bar">
+                <div class="skill-progress c"></div>
+              </div>
+            </div>
+            <div class="skill-percentage">30%</div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-name">Python</div>
+            <div class="skill-bar-container">
+              <div class="skill-bar">
+                <div class="skill-progress python"></div>
+              </div>
+            </div>
+            <div class="skill-percentage">20%</div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-name">C++</div>
+            <div class="skill-bar-container">
+              <div class="skill-bar">
+                <div class="skill-progress cpp"></div>
+              </div>
+            </div>
+            <div class="skill-percentage">24%</div>
+          </div>
         </div>
-        
-        <button type="submit" class="submit-btn">로그인</button>
-      </form>
+      </div>
+
+      <div class="section">
+        <h2><span class="emoji">🔐</span> 로그인</h2>
+        <div class="form-container">
+          <form action="#" method="post" id="loginForm">
+            <div class="form-group">
+              <label for="email">📧 이메일:</label>
+              <input type="email" id="email" name="email" required placeholder="example@email.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="password">🔒 패스워드:</label>
+              <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요">
+            </div>
+            
+            <button type="submit" class="submit-btn">로그인</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -196,10 +480,26 @@
       const password = document.getElementById('password').value;
       
       if (email && password) {
-        alert('로그인 정보:\n이메일: ' + email + '\n패스워드: ' + password);
+        alert('✅ 로그인 정보:\n이메일: ' + email + '\n패스워드: ' + password);
       } else {
-        alert('이메일과 패스워드를 모두 입력해주세요.');
+        alert('⚠️ 이메일과 패스워드를 모두 입력해주세요.');
       }
+    });
+
+    // 페이지 로드 후 스킬 바 애니메이션 실행
+    document.addEventListener('DOMContentLoaded', function() {
+      const skillBars = document.querySelectorAll('.skill-progress');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      });
+
+      skillBars.forEach(bar => {
+        observer.observe(bar);
+      });
     });
   </script>
 </body>
