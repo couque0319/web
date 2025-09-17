@@ -1,5 +1,4 @@
 # web
----
 ![오구이미지2](https://github.com/user-attachments/assets/4b611fc2-6cf5-452c-b29c-3b10534ec575)
 
 ## 강의 주차로 바로가기
