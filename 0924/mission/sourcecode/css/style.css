@@ -1,0 +1,215 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+    background-color: #f5f5f5;
+    color: #2f2f2f;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    margin-bottom: 10px;
+}
+
+.wrapper {
+    width: 85%;
+    margin: 20px auto;
+}
+
+h1 {
+    display: none;
+}
+
+h2, h3 {
+    font-family: sans-serif;
+}
+
+h2 {
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+#my_info h2 {
+    display: none;
+}
+
+#my_info img {
+    width: 100px;
+    height: auto;
+    border-radius: 50px;
+    margin-right: 40px;
+} 
+
+table {
+    display: inline-block;
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: top;
+}
+
+th {
+    text-align: left;
+    padding-right: 20px;
+}
+
+th, td {
+    font-size: 12px;
+}
+
+#myname th {
+    display: none;
+}
+
+#myname td {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: gold;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 4px;
+}
+
+ul li::before {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+ul li:nth-child(1)::before {
+    content: url('../images/ico_mobile.png');
+}
+ul li:nth-child(2)::before {
+    content: url('../images/ico_email.png');
+}
+ul li:nth-child(3)::before {
+    content: url('../images/ico_facebook.png');
+}
+ul li:nth-child(4)::before {
+    content: url('../images/ico_blog.png');
+}
+
+/* Skills 섹션의 기존 스타일은 제거하고 새로운 progress bar 스타일 적용 */
+/* #skill ol, #skill li 스타일은 주석 처리 */
+
+#project ol {
+    list-style: none;
+    padding: 0;
+}
+
+#project li {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+#project li:last-child {
+    border-bottom: none;
+}
+
+#project video {
+    width: 100%;
+}
+
+#project a {
+    color: gold;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 8px 2px 0;
+}
+
+#project a:hover {
+    background-color: #2f2f2f;
+    text-decoration: none;
+    padding: 2px 8px;
+    transition: padding 0.2s;
+}
+
+/* --- Skills Section Styles --- */
+
+/* skill 리스트의 기본 스타일을 초기화합니다. */
+.skill-list {
+    list-style: none; /* 기본으로 제공되는 점이나 숫자 제거 */
+    padding: 0;
+    margin: 0;
+}
+
+/* 각 스킬 항목의 아래쪽 여백을 설정합니다. */
+.skill-list li {
+    margin-bottom: 20px; 
+}
+
+/* .skill-list li의 기존 before 스타일 제거 */
+.skill-list li::before {
+    display: none;
+}
+
+/* 스킬 이름(h3)의 스타일을 지정합니다. */
+.skill-list h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* 프로그레스 바의 배경(전체 범위) 스타일입니다. */
+.progress-bar {
+    background-color: #e9ecef;  /* 배경색 (연한 회색) */
+    border-radius: 10px;        /* 모서리를 둥글게 */
+    height: 22px;               /* 높이 */
+    width: 100%;                /* 너비 */
+    overflow: hidden;           /* 둥근 모서리 밖으로 나가는 내용을 숨김 */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* 안쪽 그림자 효과 */
+    position: relative;         /* 퍼센트 텍스트 위치 조정을 위해 추가 */
+}
+
+/* 실제 숙련도를 나타내는 바의 스타일입니다. */
+.progress {
+    background-color: #007bff;  /* 채워지는 색상 (파란색 계열) */
+    color: #ffffff;             /* 퍼센테이지 텍스트 색상 (흰색) */
+    height: 100%;               /* 부모 요소(progress-bar)의 높이를 꽉 채움 */
+    display: flex;              /* 텍스트를 중앙에 정렬하기 위해 flex 사용 */
+    align-items: center;
+    justify-content: flex-end;  /* 텍스트를 오른쪽 끝으로 정렬 */
+    padding-right: 8px;         /* 오른쪽 여백 추가 */
+    font-size: 0.75rem;         /* 폰트 크기를 약간 줄임 */
+    font-weight: bold;
+    border-radius: 10px;        /* 전체를 둥글게 처리 */
+    transition: width 0.6s ease;  /* 너비가 변할 때 부드러운 애니메이션 효과 */
+    min-width: 45px;            /* 최소 너비 보장하여 텍스트가 잘리지 않도록 */
+    box-sizing: border-box;     /* padding을 포함한 박스 크기 계산 */
+}
+
+/* 낮은 퍼센테이지일 때 텍스트가 잘리지 않도록 추가 조정 */
+.progress[style*="width: 20%"],
+.progress[style*="width: 30%"] {
+    justify-content: center;    /* 낮은 퍼센테이지에서는 중앙 정렬 */
+    padding-right: 0;
+}
+
+/* hover 효과 추가 */
+.progress:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
+}
