@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>별 모양 출력</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <h1>별 모양 출력</h1>
+  <pre id="stars"></pre>
+
+  <script>
+    const n = 5; // 줄 수
+    let result = "";
+
+    // 1. 계단형
+    result += "계단형:\n";
+    for (let i = 1; i <= n; i++) {
+      let line = "";
+      for (let j = 1; j <= i; j++) {
+        line += "*";
+      }
+      result += line + "\n";
+    }
+
+    // 2. 뒤집힌 계단형
+    result += "\n뒤집힌 계단형:\n";
+    for (let i = 1; i <= n; i++) {
+      let line = "";
+      for (let j = 1; j <= n - i; j++) line += " ";
+      for (let k = 1; k <= i; k++) line += "*";
+      result += line + "\n";
+    }
+
+    // 3. 삼각형
+    result += "\n삼각형:\n";
+    for (let i = 1; i <= n; i++) {
+      let line = "";
+      for (let j = 1; j <= n - i; j++) line += " ";
+      for (let k = 1; k <= 2 * i - 1; k++) line += "*";
+      result += line + "\n";
+    }
+
+    // 4. 마름모
+    result += "\n마름모:\n";
+    for (let i = 1; i <= n; i++) {
+      let line = "";
+      for (let j = 1; j <= n - i; j++) line += " ";
+      for (let k = 1; k <= 2 * i - 1; k++) line += "*";
+      result += line + "\n";
+    }
+    for (let i = n - 1; i >= 1; i--) {
+      let line = "";
+      for (let j = 1; j <= n - i; j++) line += " ";
+      for (let k = 1; k <= 2 * i - 1; k++) line += "*";
+      result += line + "\n";
+    }
+
+    document.getElementById("stars").textContent = result;
+  </script>
+</body>
+</html>

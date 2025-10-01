@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>윤년 판별하기</title>
+</head>
+<body>
+  <h2>윤년(leap year) 판별 프로그램</h2>
+  <p>년도를 입력하고 버튼을 누르면 윤년인지 평년인지 알려줍니다.</p>
+
+  <!-- 입력 -->
+  <input type="number" id="year" placeholder="예: 2024">
+  <button onclick="checkLeapYear()">확인</button>
+
+  <!-- 결과 -->
+  <p id="result"></p>
+
+  <script>
+    function checkLeapYear() {
+      var year = document.getElementById("year").value;
+      var resultEl = document.getElementById("result");
+
+      if (year === "") {
+        resultEl.innerHTML = "년도를 입력하세요!";
+        resultEl.style.color = "red";
+        return;
+      }
+
+      year = parseInt(year);
+
+      // 윤년 조건 판별
+      if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+        resultEl.innerHTML = year + "년은 윤년(leap year)입니다.";
+        resultEl.style.color = "blue";
+      } else {
+        resultEl.innerHTML = year + "년은 평년(common year)입니다.";
+        resultEl.style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>
