@@ -1,5 +1,6 @@
 # web
-![오구이미지2](https://github.com/user-attachments/assets/4b611fc2-6cf5-452c-b29c-3b10534ec575)
+
+![오구이미지4](https://github.com/user-attachments/assets/510408c0-67df-48dc-83e3-0fa204132a15)
 
 ## 강의 주차로 바로가기
 
