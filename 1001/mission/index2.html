@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>이름 입력 페이지</title>
+</head>
+<body>
+
+  <!-- (1) 사용자 입력과 출력 -->
+  <h2>이름 입력하기</h2>
+  <p>이름을 입력하고 버튼을 누르면 인사말이 출력됩니다.</p>
+  <input type="text" id="username" placeholder="이름을 입력하세요">
+  <button onclick="sayHello()">인사하기</button>
+  <p id="greet"></p>
+
+  <hr>
+
+  <img src="오구이미지.png"
+       onmouseover="this.src='오구이미지2.png'"
+       onmouseout="this.src='오구이미지.png'">
+
+  <hr>
+
+  <script>
+    // (1) 이름 입력 후 인사하기
+    function sayHello() {
+      var name = document.getElementById("username").value;
+      var greetEl = document.getElementById("greet");
+
+      if (name.trim() === "") {
+        greetEl.innerHTML = "이름을 입력해주세요!";
+        greetEl.style.color = "red";
+      } else {
+        greetEl.innerHTML = name + "님, 안녕하세요!";
+        greetEl.style.color = "blue";
+      }
+    }
+
+  </script>
+</body>
+</html>
